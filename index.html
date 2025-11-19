@@ -523,6 +523,8 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 2rem;
+            background-size: cover;
+            background-position: top center;
         }
 
         .portfolio-card::before {
@@ -555,17 +557,23 @@
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
         }
 
         .portfolio-card h4 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .portfolio-card p {
             color: var(--text-secondary);
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
         }
 
         /* TESTIMONIOS */
@@ -1054,9 +1062,10 @@
         <div class="landing-highlight">
             <h3>Landing Sencilla</h3>
             <div class="price">$49</div>
-            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem;">
                 Perfecta para emprendedores y pequeños negocios. Incluye diseño profesional, optimización móvil y enlace directo a WhatsApp.
             </p>
+            <a href="marca-evolutiva-landing.html" target="_blank" class="btn-secondary" style="display: inline-block;">Ver ejemplo de landing $49</a>
         </div>
 
         <div class="cards-grid">
@@ -1081,7 +1090,7 @@
 
         <div style="text-align: center; margin-top: 2rem;">
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                <strong>Casos de éxito:</strong> ZamusaCorp (repuestos), centros médicos, productos estrella, marcas personales y más.
+                <strong>Casos de éxito:</strong> ZamusaCorp (repuestos), GinecoSpa (centro médico), Steel Precision (industrial) y más.
             </p>
             <a href="https://wa.me/17864122755?text=Quiero%20una%20landing%20page" class="btn-primary" target="_blank">Quiero una landing page</a>
         </div>
@@ -1129,22 +1138,28 @@
         </div>
 
         <div class="portfolio-grid">
-            <div class="portfolio-card">
+            <!-- ZamusaCorp -->
+            <div class="portfolio-card" style="background-image: linear-gradient(to bottom, rgba(10, 10, 15, 0.3), rgba(10, 10, 15, 0.95)), url('https://res.cloudinary.com/dzq9lldhw/image/upload/v1763525131/Captura_de_pantalla_2025-11-19_a_la_s_12.03.36_a._m._s58jjh.png');">
                 <span class="portfolio-tag">Landing Page</span>
                 <h4>ZamusaCorp</h4>
                 <p>Landing especializada para e-commerce de repuestos automotrices con catálogo integrado.</p>
+                <a href="https://zamusacorp.com" target="_blank" class="btn-secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem; position: relative; z-index: 3;">Ver landing →</a>
             </div>
 
-            <div class="portfolio-card">
+            <!-- GinecoSpa -->
+            <div class="portfolio-card" style="background-image: linear-gradient(to bottom, rgba(10, 10, 15, 0.3), rgba(10, 10, 15, 0.95)), url('https://res.cloudinary.com/dzq9lldhw/image/upload/v1763525139/Captura_de_pantalla_2025-11-19_a_la_s_12.01.40_a._m._wq44i5.png');">
                 <span class="portfolio-tag">Branding + Landing</span>
-                <h4>Centro Médico Integral</h4>
-                <p>Identidad visual completa y landing de captación con formularios de agendamiento de citas.</p>
+                <h4>GinecoSpa</h4>
+                <p>Centro médico especializado. Identidad visual completa y landing de captación profesional.</p>
+                <a href="https://ginecospa.org" target="_blank" class="btn-secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem; position: relative; z-index: 3;">Ver landing →</a>
             </div>
 
-            <div class="portfolio-card">
-                <span class="portfolio-tag">Landing + Meta Ads</span>
-                <h4>Producto Estrella</h4>
-                <p>Landing optimizada para lanzamiento con campañas de Meta Ads que generaron +200 conversiones.</p>
+            <!-- Steel Precision -->
+            <div class="portfolio-card" style="background-image: linear-gradient(to bottom, rgba(10, 10, 15, 0.3), rgba(10, 10, 15, 0.95)), url('https://res.cloudinary.com/dzq9lldhw/image/upload/v1763525136/Captura_de_pantalla_2025-11-19_a_la_s_12.02.19_a._m._w6srkj.png');">
+                <span class="portfolio-tag">Landing Industrial</span>
+                <h4>Steel Precision</h4>
+                <p>Landing industrial de precisión con diseño técnico que genera credibilidad profesional B2B.</p>
+                <a href="https://steelprecision.net" target="_blank" class="btn-secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem; position: relative; z-index: 3;">Ver landing →</a>
             </div>
 
             <div class="portfolio-card">
@@ -1159,10 +1174,12 @@
                 <p>Estrategia integral: branding, landing, campañas y contenido para lanzamiento de tienda online.</p>
             </div>
 
+            <!-- Landing de $49 - Ejemplo -->
             <div class="portfolio-card">
-                <span class="portfolio-tag">Landing Sencilla</span>
-                <h4>Servicios Profesionales</h4>
-                <p>Landing de $49 para abogado independiente con formulario de contacto y enlace a WhatsApp.</p>
+                <span class="portfolio-tag">Landing Sencilla $49</span>
+                <h4>Landing Page Premium</h4>
+                <p>Ejemplo de nuestra landing de $49 con diseño oscuro premium y efectos visuales avanzados.</p>
+                <a href="marca-evolutiva-landing.html" target="_blank" class="btn-secondary" style="display: inline-block; margin-top: 0.5rem; font-size: 0.9rem; padding: 0.6rem 1.2rem; position: relative; z-index: 3;">Ver ejemplo →</a>
             </div>
         </div>
     </section>
