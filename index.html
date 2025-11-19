@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marca Evolutiva | Agencia de Branding, Landing Pages y Meta Ads</title>
+    <meta name="description" content="Evolucionamos tu marca con diseño, estrategia y campañas que convierten. Branding, landing pages y Meta Ads.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-pink: #ff6b9d;
+            --accent-purple: #764ba2;
+            --accent-blue: #667eea;
+            --accent-orange: #ff8a5b;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4c8;
+            --glow-pink: rgba(255, 107, 157, 0.4);
+            --glow-purple: rgba(118, 75, 162, 0.4);
+            --glow-blue: rgba(102, 126, 234, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fondo animado con gradientes */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(255, 138, 91, 0.06) 0%, transparent 50%);
+            animation: backgroundMove 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-30px, 30px) rotate(-5deg); }
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            background: rgba(10, 10, 15, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.8rem 5%;
+            background: rgba(10, 10, 15, 0.9);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-whatsapp-header {
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp-header:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Menu hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* SECCIONES BASE */
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HERO SECTION */
+        #inicio {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(255, 107, 157, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            border-radius: 50px;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 30px var(--glow-purple);
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px var(--glow-blue);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .mockup-container {
+            position: relative;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .mockup-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .mockup-card:nth-child(1) {
+            box-shadow: 0 0 40px var(--glow-pink);
+        }
+
+        .mockup-card:nth-child(2) {
+            box-shadow: 0 0 40px var(--glow-blue);
+        }
+
+        .mockup-card:nth-child(3) {
+            box-shadow: 0 0 40px var(--glow-purple);
+        }
+
+        .mockup-card:nth-child(4) {
+            grid-column: 1 / -1;
+            box-shadow: 0 0 40px rgba(255, 138, 91, 0.4);
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        /* SECCIONES CON TÍTULOS */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 40px var(--glow-purple), 0 15px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px var(--glow-purple);
+        }
+
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* META ADS - PROCESO */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 30px var(--glow-purple);
+        }
+
+        .step h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+        }
+
+        /* LANDING PAGES - DESTACADO $49 */
+        .landing-highlight {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+            border: 2px solid var(--accent-pink);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 0 50px var(--glow-pink);
+        }
+
+        .landing-highlight h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .landing-highlight .price {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent-pink);
+            margin: 1rem 0;
+        }
+
+        /* PORTAFOLIO */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-purple) 100%);
+            opacity: 0.1;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px var(--glow-purple), 0 15px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* TESTIMONIOS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px var(--glow-blue), 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* PLANES / PRICING */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(20px);
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 0 50px var(--glow-purple), 0 8px 32px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 40px var(--glow-purple), 0 15px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin: 1rem 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-right: 0.8rem;
+        }
+
+        /* CONTACTO FINAL */
+        #contacto {
+            text-align: center;
+            padding: 120px 5%;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.05) 0%, rgba(102, 126, 234, 0.05) 100%);
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-box h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-box p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-link:hover {
+            color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(10, 10, 15, 0.9);
+            border-top: 1px solid var(--border-glass);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-pink);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 300px;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 100px 2rem;
+                transition: right 0.4s ease;
+                border-left: 1px solid var(--border-glass);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .cards-grid,
+            .portfolio-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .mockup-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
+            }
+
+            .mockup-card:nth-child(4) {
+                grid-column: 1;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .contact-box {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .landing-highlight {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        /* Animaciones al scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="header">
+        <nav>
+            <div class="logo">Marca Evolutiva</div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#branding">Branding</a></li>
+                <li><a href="#meta-ads">Meta Ads</a></li>
+                <li><a href="#landing-pages">Landing Pages</a></li>
+                <li><a href="#marketing">Marketing</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#planes">Planes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="https://wa.me/17864122755" class="btn-whatsapp-header" target="_blank">WhatsApp</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="eyebrow">Agencia de branding, marketing y campañas publicitarias</span>
+                <h1>Evolucionamos tu marca con diseño, estrategia y campañas que convierten.</h1>
+                <p class="hero-subtitle">Somos Marca Evolutiva: creamos branding sólido, landings de alto impacto y campañas en Meta Ads que traen clientes reales.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/17864122755?text=Hola%20quiero%20información%20sobre%20los%20servicios%20de%20Marca%20Evolutiva" class="btn-primary" target="_blank">Hablar por WhatsApp</a>
+                    <a href="#portafolio" class="btn-secondary">Ver portafolio</a>
+                </div>
+
+                <div class="hero-badges">
+                    <span class="badge">✨ Especialistas en Meta Ads</span>
+                    <span class="badge">🚀 Landing pages de alto rendimiento</span>
+                    <span class="badge">🎨 Branding moderno y estratégico</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="mockup-container">
+                    <div class="mockup-card">
+                        <p><strong>Identidad Visual</strong><br>Logos y branding profesional</p>
+                    </div>
+                    <div class="mockup-card">
+                        <p><strong>Campañas Meta</strong><br>Anuncios que convierten</p>
+                    </div>
+                    <div class="mockup-card">
+                        <p><strong>Landing Pages</strong><br>Diseño web optimizado</p>
+                    </div>
+                    <div class="mockup-card">
+                        <p><strong>Estrategia Completa</strong><br>De la idea al resultado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDING -->
+    <section id="branding" class="fade-in">
+        <div class="section-header">
+            <h2>Branding e identidad visual que se siente profesional</h2>
+            <p class="section-subtitle">Creamos marcas modernas, limpias y memorables que se ven bien en redes, landings y campañas.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Creación de logo</h3>
+                <p>Diseñamos logos únicos que representan la esencia de tu marca y funcionan en cualquier plataforma.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎭</div>
+                <h3>Paleta de colores & tipografías</h3>
+                <p>Definimos una identidad visual coherente con colores y fuentes que transmiten tu personalidad de marca.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📘</div>
+                <h3>Manual de marca compacto</h3>
+                <p>Te entregamos una guía clara de cómo usar tu marca correctamente en todos tus materiales.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Diseño para redes sociales</h3>
+                <p>Adaptamos tu identidad visual para historias, posts y perfiles que se destacan en Instagram y Facebook.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                <strong style="color: var(--accent-pink);">Pasamos de un logo básico a una identidad completa</strong> lista para campañas, redes y landings profesionales.
+            </p>
+            <a href="https://wa.me/17864122755?text=Quiero%20trabajar%20mi%20marca" class="btn-primary" target="_blank">Quiero trabajar mi marca</a>
+        </div>
+    </section>
+
+    <!-- META ADS -->
+    <section id="meta-ads" class="fade-in">
+        <div class="section-header">
+            <h2>Campañas Meta Ads que traen conversaciones y ventas</h2>
+            <p class="section-subtitle">Configuramos y optimizamos tus campañas en Facebook e Instagram para que generen clientes, no solo clics.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">💬</div>
+                <h3>Campañas de mensajes</h3>
+                <p>WhatsApp, Messenger e Instagram DM. Dirigimos tráfico directamente a tus conversaciones para que conectes con clientes potenciales al instante.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Campañas de tráfico</h3>
+                <p>Llevamos visitantes calificados a tu landing page, sitio web o catálogo para maximizar tus oportunidades de venta.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>Campañas de conversiones</h3>
+                <p>Optimizadas para ventas directas, registros o acciones específicas. Medimos y ajustamos para mejorar resultados constantemente.</p>
+            </div>
+        </div>
+
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Analizamos tu negocio</h4>
+                <p>Entendemos tu audiencia, objetivos y competencia para definir la mejor estrategia.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Creamos creatividades</h4>
+                <p>Diseñamos anuncios atractivos y escribimos textos persuasivos que captan atención.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Lanzamos y optimizamos</h4>
+                <p>Monitoreamos resultados diariamente y ajustamos para mejorar rendimiento y reducir costos.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://wa.me/17864122755?text=Quiero%20campañas%20Meta%20Ads" class="btn-primary" target="_blank">Quiero campañas Meta Ads</a>
+        </div>
+    </section>
+
+    <!-- LANDING PAGES -->
+    <section id="landing-pages" class="fade-in">
+        <div class="section-header">
+            <h2>Landing pages diseñadas para convertir</h2>
+            <p class="section-subtitle">Desde landings sencillas de $49 hasta estructuras más avanzadas, siempre enfocadas en un objetivo concreto.</p>
+        </div>
+
+        <div class="landing-highlight">
+            <h3>Landing Sencilla</h3>
+            <div class="price">$49</div>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                Perfecta para emprendedores y pequeños negocios. Incluye diseño profesional, optimización móvil y enlace directo a WhatsApp.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Landings avanzadas</h3>
+                <p>Para lanzamientos de productos, servicios complejos o embudos de venta. Incluyen formularios, integraciones y diseño a medida.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏥</div>
+                <h3>Landings especializadas</h3>
+                <p>Centros médicos, repuestos, cursos online, inmobiliarias. Cada una diseñada específicamente para su industria y objetivo.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Optimización constante</h3>
+                <p>Analizamos métricas y mejoramos continuamente tu landing para aumentar la tasa de conversión y reducir el costo por lead.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                <strong>Casos de éxito:</strong> ZamusaCorp (repuestos), centros médicos, productos estrella, marcas personales y más.
+            </p>
+            <a href="https://wa.me/17864122755?text=Quiero%20una%20landing%20page" class="btn-primary" target="_blank">Quiero una landing page</a>
+        </div>
+    </section>
+
+    <!-- MARKETING & CONTENIDOS -->
+    <section id="marketing" class="fade-in">
+        <div class="section-header">
+            <h2>Marketing y contenidos que acompañan a tu marca</h2>
+            <p class="section-subtitle">Creamos piezas que no solo se ven bien, sino que también cuentan tu historia y conectan con tu cliente.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">✍️</div>
+                <h3>Copywriting estratégico</h3>
+                <p>Textos persuasivos para landings, anuncios y correos que generan acción y convierten visitantes en clientes.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎬</div>
+                <h3>Creatividades para anuncios</h3>
+                <p>Diseños visuales impactantes que destacan en el feed de Facebook e Instagram y captan la atención de tu audiencia.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📸</div>
+                <h3>Piezas para redes sociales</h3>
+                <p>Posts, historias y carruseles coherentes con tu identidad de marca que mantienen activa tu presencia digital.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎥</div>
+                <h3>Guiones para videos</h3>
+                <p>Scripts efectivos para reels, stories y videos promocionales que transmiten tu mensaje de forma clara y atractiva.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="fade-in">
+        <div class="section-header">
+            <h2>Nuestro portafolio</h2>
+            <p class="section-subtitle">Algunos de los proyectos que hemos creado para marcas como la tuya.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <span class="portfolio-tag">Landing Page</span>
+                <h4>ZamusaCorp</h4>
+                <p>Landing especializada para e-commerce de repuestos automotrices con catálogo integrado.</p>
+            </div>
+
+            <div class="portfolio-card">
+                <span class="portfolio-tag">Branding + Landing</span>
+                <h4>Centro Médico Integral</h4>
+                <p>Identidad visual completa y landing de captación con formularios de agendamiento de citas.</p>
+            </div>
+
+            <div class="portfolio-card">
+                <span class="portfolio-tag">Landing + Meta Ads</span>
+                <h4>Producto Estrella</h4>
+                <p>Landing optimizada para lanzamiento con campañas de Meta Ads que generaron +200 conversiones.</p>
+            </div>
+
+            <div class="portfolio-card">
+                <span class="portfolio-tag">Branding</span>
+                <h4>Marca Personal - Coach</h4>
+                <p>Branding completo con manual de marca, diseño de redes sociales y materiales digitales.</p>
+            </div>
+
+            <div class="portfolio-card">
+                <span class="portfolio-tag">Campaña Completa</span>
+                <h4>E-commerce de Moda</h4>
+                <p>Estrategia integral: branding, landing, campañas y contenido para lanzamiento de tienda online.</p>
+            </div>
+
+            <div class="portfolio-card">
+                <span class="portfolio-tag">Landing Sencilla</span>
+                <h4>Servicios Profesionales</h4>
+                <p>Landing de $49 para abogado independiente con formulario de contacto y enlace a WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="fade-in">
+        <div class="section-header">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <p class="section-subtitle">Resultados reales de marcas que evolucionaron con nosotros.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">"Los anuncios empezaron a traer clientes el mismo día. La inversión se recuperó en menos de una semana."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JM</div>
+                    <div class="author-info">
+                        <h5>Juan Martínez</h5>
+                        <p>Dueño de tienda de repuestos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Nuestra marca cambió por completo. Ahora se ve profesional y transmite exactamente lo que queremos comunicar."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MR</div>
+                    <div class="author-info">
+                        <h5>María Rodríguez</h5>
+                        <p>Directora de centro médico</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"La landing nos triplicó los mensajes por WhatsApp. Simple, efectiva y exactamente lo que necesitábamos."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CP</div>
+                    <div class="author-info">
+                        <h5>Carlos Pérez</h5>
+                        <p>Emprendedor digital</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Entendieron perfectamente mi negocio. La estrategia de Meta Ads está trayendo leads de calidad constantemente."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AG</div>
+                    <div class="author-info">
+                        <h5>Ana García</h5>
+                        <p>Coach empresarial</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"El branding que crearon nos diferencia completamente de la competencia. Ahora somos reconocibles al instante."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LF</div>
+                    <div class="author-info">
+                        <h5>Luis Fernández</h5>
+                        <p>Fundador de startup tech</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Por $49 obtuve una landing que genera más consultas que mi anterior sitio web. Increíble relación calidad-precio."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SM</div>
+                    <div class="author-info">
+                        <h5>Sofía Mendoza</h5>
+                        <p>Consultora independiente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes" class="fade-in">
+        <div class="section-header">
+            <h2>Nuestros planes</h2>
+            <p class="section-subtitle">Elige el servicio que necesitas o combínalos para mejores resultados.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Plan Branding</h3>
+                <div class="price">Consultar</div>
+                <ul class="pricing-features">
+                    <li>Logo profesional</li>
+                    <li>Paleta de colores</li>
+                    <li>Tipografías definidas</li>
+                    <li>Manual de marca básico</li>
+                    <li>Diseños para redes sociales</li>
+                    <li>Revisiones incluidas</li>
+                </ul>
+                <a href="https://wa.me/17864122755?text=Quiero%20el%20Plan%20Branding" class="btn-secondary" target="_blank">Quiero este plan</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Plan Landing Pages</h3>
+                <div class="price">Desde $49</div>
+                <ul class="pricing-features">
+                    <li>Landing sencilla ($49)</li>
+                    <li>Diseño responsive</li>
+                    <li>Optimización móvil</li>
+                    <li>Enlace a WhatsApp</li>
+                    <li>Hosting opcional</li>
+                    <li>Landings avanzadas disponibles</li>
+                </ul>
+                <a href="https://wa.me/17864122755?text=Quiero%20una%20Landing%20Page" class="btn-secondary" target="_blank">Quiero este plan</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3>Plan Meta Ads</h3>
+                <div class="price">Consultar</div>
+                <ul class="pricing-features">
+                    <li>Configuración de campañas</li>
+                    <li>Diseño de creatividades</li>
+                    <li>Copywriting para anuncios</li>
+                    <li>Segmentación de audiencia</li>
+                    <li>Optimización continua</li>
+                    <li>Reportes semanales</li>
+                </ul>
+                <a href="https://wa.me/17864122755?text=Quiero%20el%20Plan%20Meta%20Ads" class="btn-primary" target="_blank">Quiero este plan</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Plan Completo</h3>
+                <div class="price">Premium</div>
+                <ul class="pricing-features">
+                    <li>Branding completo</li>
+                    <li>Landing optimizada</li>
+                    <li>Campañas Meta Ads</li>
+                    <li>Estrategia integral</li>
+                    <li>Contenido para redes</li>
+                    <li>Soporte prioritario</li>
+                </ul>
+                <a href="https://wa.me/17864122755?text=Quiero%20el%20Plan%20Completo" class="btn-secondary" target="_blank">Quiero este plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="contact-box">
+            <h2>¿Listo para evolucionar tu marca?</h2>
+            <p>Escríbenos y te ayudamos a definir qué necesitas: branding, landings, campañas o todo el paquete.</p>
+            
+            <a href="https://wa.me/17864122755" class="btn-primary" target="_blank" style="font-size: 1.2rem; padding: 1.2rem 3rem; margin-bottom: 2rem; display: inline-block;">Hablar por WhatsApp</a>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/marcaevolutiva" target="_blank">
+                    <span>📷</span>
+                    <span>@marcaevolutiva</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Marca Evolutiva · Agencia de branding, landings y campañas publicitarias.</p>
+        <div class="footer-links">
+            <a href="https://wa.me/17864122755" target="_blank">WhatsApp</a>
+            <a href="https://instagram.com/marcaevolutiva" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Año actual en footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Menu toggle móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Animaciones al scroll (Intersection Observer)
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Smooth scroll adicional (por si acaso)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efecto parallax sutil en hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#inicio');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+
+</body>
+</html>
